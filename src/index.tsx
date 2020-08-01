@@ -1,7 +1,6 @@
 import * as React from "react";
 import { render } from "react-dom";
-import App from "./components/App";
+import Root from "./root/root";
 
 const rootEl = document.getElementById("root");
-
-render(<App />, rootEl);
+render(<Root />, rootEl);
