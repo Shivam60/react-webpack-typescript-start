@@ -20,7 +20,7 @@
         "editor.formatOnSave": false
     },
     "git.confirmSync": false,
-    "prettier.singleQuote": true,
+    "prettier.singleQuote": false,
     "prettier.withNodeModules": true,
     "prettier.tabWidth": 2,
     "prettier.printWidth": 140,
