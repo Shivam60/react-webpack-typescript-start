@@ -1,4 +1,5 @@
 import axios from "axios";
+import MaterialTable from "material-table";
 import * as React from "react";
 import { useHistory } from "react-router-dom";
 import Papa = require("papaparse");
@@ -18,32 +19,25 @@ export default function Home(): React.ReactElement {
   if (!data) {
     return null;
   }
+
   return (
     <div>
-      <table>
-        <tr>
-          <td>Txn Date</td>
-          <td>Value Date</td>
-          <td>Description</td>
-          <td>Ref No./Cheque No.</td>
-          <td>Debit</td>
-          <td>Credit</td>
-          <td>Balance</td>
-        </tr>
-        {data?.map((obj, index) => {
-          return (
-            <tr>
-              <td>{obj["Txn Date"]?.trim()}</td>
-              <td>{obj["Value Date"]?.trim()}</td>
-              <td>{obj["Description"]?.trim()}</td>
-              <td>{obj["Ref No./Cheque No."]?.trim()}</td>
-              <td>{obj["Debit"]?.trim()}</td>
-              <td>{obj["Credit"]?.trim()}</td>
-              <td>{obj["Balance"]?.trim()}</td>
-            </tr>
-          );
-        })}
-      </table>
+      <MaterialTable
+        options={{
+          pageSize: 10,
+        }}
+        columns={[
+          { field: "Txn Date" },
+          { field: "Value Date" },
+          { field: "Description", type: "numeric" },
+          { field: "Ref No./Cheque No.", type: "numeric" },
+          { field: "Debit", type: "numeric" },
+          { field: "Credit", type: "numeric" },
+          { field: "Balance", type: "numeric" },
+        ]}
+        data={data}
+        title="Transaction View SBI"
+      />
     </div>
   );
 }
